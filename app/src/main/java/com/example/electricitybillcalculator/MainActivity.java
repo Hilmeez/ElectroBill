@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnCalc, btnClear;
     TextView tvFinal, tvTcharge, tvRreceive;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         TextView toolbarTitle = findViewById(R.id.toolbar_title);
-
 
         etKwh = findViewById(R.id.etKwh);
         etRebate = findViewById(R.id.etRebate);
@@ -50,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         tvRreceive = findViewById(R.id.tvRreceive);
         tvFinal = findViewById(R.id.tvFinal);
 
-
-
         btnCalc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,22 +53,21 @@ public class MainActivity extends AppCompatActivity {
                 double kwh = 0.0, Rebate = 0.0;
                 double totalC = 0.0;
                 double finalC;
-                //try and catch for error handling
+
+                // Try and catch for error handling
                 try {
                     kwh = Double.parseDouble(inputKwh);
                     Rebate = Double.parseDouble(inputRebate);
 
-                    if ( Rebate > 5) {
+                    if (Rebate > 5) {
                         Toast.makeText(getApplicationContext(), "Inputs cannot more than 5%!", Toast.LENGTH_SHORT).show();
                         return;
-
-                        }
+                    }
                 } catch (NumberFormatException nfe) {
                     Toast.makeText(getApplicationContext(), "Please enter numbers in the input field", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Please enter numbers in the input field", Toast.LENGTH_SHORT).show();
                 }
-
 
                 if (kwh > 600) {
                     totalC += (kwh - 600) * 0.546;
@@ -105,16 +97,19 @@ public class MainActivity extends AppCompatActivity {
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 etKwh.setText("");
                 etRebate.setText("");
                 tvTcharge.setText(String.format("Total Charge:\t\t\t\t\t\tRM 0.00"));
                 tvRreceive.setText(String.format("Rebate Received:\t\tRM 0.00"));
                 tvFinal.setText(String.format("Total Bill:\t\t\t\t\t\t\tRM 0.00"));
                 Toast.makeText(getApplicationContext(), "Clear is clicked", Toast.LENGTH_SHORT).show();
-
-
             }
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
         });
     }
 
@@ -142,10 +137,8 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }
+
 
 
 

@@ -15,7 +15,7 @@
         <activity
             android:name=".Instruction"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />/>
+            android:parentActivityName=".MainActivity" />
 
         <activity
             android:name=".aboutActivity"
