@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ElectricityBillCalculator" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimaryDark">#00BEDB</item>
+         <item name="colorPrimary">#210202</item>
+        <item name="colorAccent">@color/accent_color</item>
+
+    </style>
+    <style name="ToolbarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name = "android:textColorPrimary">@color/white</item>
+        <item name = "android:textColorSecondary">@color/white</item>"
+    </style>
+
+
+    <style name="Theme.ElectricityBillCalculator" parent="Base.Theme.ElectricityBillCalculator" />
+</resources>
