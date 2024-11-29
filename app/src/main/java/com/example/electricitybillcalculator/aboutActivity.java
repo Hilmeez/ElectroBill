@@ -38,7 +38,7 @@ public class aboutActivity extends AppCompatActivity {
         btnGit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String url = "https://www.youtube.com";
+                String url = "https://github.com/Hilmeez/ElectroBill";
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
